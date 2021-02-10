@@ -1,7 +1,11 @@
 const express = require('express');
+const morgan = require('morgan');
+
 
 //express app
 const app =express();
+//mongo connection
+const dburi = 'mongodb+srv://user1:test123@node.q8nfi.mongodb.net/user1?retryWrites=true&w=majority';
 
 // register view engine
 
@@ -11,18 +15,18 @@ app.set('view engine', 'ejs');
 // listen for request
 
 app.listen(3000);
-// middleware
+// middleware & static
+app.use(express.static('public'));
+app.use(morgan('dev'));
 
-app.use((req, res, next) => {
-    console.log('New request was made');
-    console.log('Host:', req.hostname);
-    console.log('Path:', req.path);
-    console.log('Method:', req.method);
-    next();
-
-});
-
-
+// app.use((req, res, next) => {
+//     console.log('New request was made');
+//     console.log('Host:', req.hostname);
+//     console.log('Path:', req.path);
+//     console.log('Method:', req.method);
+//     next();
+//
+// });
 
 app.get('/', (req,res) => {
  //res.send('<p> Home Page </p>');
