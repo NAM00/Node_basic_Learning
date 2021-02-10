@@ -5,12 +5,24 @@ const app =express();
 
 // register view engine
 
-//app.set('views', 'myviews'); // if the default views folder is named differntly
+//app.set('views', 'myviews'); // if the default views folder is named differently
 app.set('view engine', 'ejs');
 
 // listen for request
 
 app.listen(3000);
+// middleware
+
+app.use((req, res, next) => {
+    console.log('New request was made');
+    console.log('Host:', req.hostname);
+    console.log('Path:', req.path);
+    console.log('Method:', req.method);
+    next();
+
+});
+
+
 
 app.get('/', (req,res) => {
  //res.send('<p> Home Page </p>');
