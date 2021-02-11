@@ -61,8 +61,8 @@ app.get('/about-us', (req,res) => {
     res.redirect('/about');
 });
 //blog routes
-//app.use('/blogs',blogRoutes);
-app.use(blogRoutes);
+app.use('/blogs',blogRoutes);
+//app.use(blogRoutes);
 
 // 404 page
 app.use((req,res) => {
